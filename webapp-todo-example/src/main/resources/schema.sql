@@ -11,5 +11,6 @@ CREATE TABLE todo.todos
     title       character varying(50)    NOT NULL,
     description character varying(100)   NOT NULL,
     emergency   boolean                  NOT NULL,
+    priority    integer                  NOT NULL,
     created_at  timestamp with time zone NOT NULL DEFAULT now()
 );

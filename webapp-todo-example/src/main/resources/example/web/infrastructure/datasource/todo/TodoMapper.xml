@@ -4,16 +4,20 @@
 <mapper namespace="example.web.infrastructure.datasource.todo.TodoMapper">
     <resultMap id="Todo" type="example.web.domain.model.todo.Todo">
         <constructor>
+            <idArg column="id" javaType="Long"/>
             <arg column="title" javaType="String"/>
             <arg column="description" javaType="String"/>
             <arg column="emergency" javaType="boolean"/>
+            <arg column="priority" javaType="int"/>
         </constructor>
     </resultMap>
 
     <select id="findAll" resultMap="Todo">
-        SELECT title
+        SELECT id
+             , title
              , description
              , emergency
+             , priority
         FROM todo.todos
     </select>
 
@@ -22,9 +26,11 @@
     </select>
 
     <select id="insert">
-        INSERT INTO todo.todos(title, description, emergency)
-        VALUES (#{title},
+        INSERT INTO todo.todos(id, title, description, emergency, priority)
+        VALUES (#{id},
+                #{title},
                 #{description},
-                #{emergency})
+                #{emergency},
+                #{priority})
     </select>
 </mapper>

@@ -6,6 +6,8 @@ public class Todo {
     private String description;
     private Boolean emergency;
 
+    private int priority;
+
     public Long getId() {
         return id;
     }
@@ -22,6 +24,10 @@ public class Todo {
         return emergency;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -36,5 +42,9 @@ public class Todo {
 
     public void setEmergency(Boolean emergency) {
         this.emergency = emergency;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

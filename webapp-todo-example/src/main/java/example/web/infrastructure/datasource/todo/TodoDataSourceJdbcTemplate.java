@@ -24,7 +24,7 @@ public class TodoDataSourceJdbcTemplate implements TodoRepository {
     public List<Todo> findAll() {
         List<Todo> todoList = new ArrayList<>();
 
-        String query = "SELECT id, title, description, emergency FROM todo.todos";
+        String query = "SELECT id, title, description, emergency, priority FROM todo.todos";
 
         List<Map<String, Object>> resultList = jdbcTemplate.queryForList(query);
 
@@ -34,6 +34,7 @@ public class TodoDataSourceJdbcTemplate implements TodoRepository {
             todo.setTitle((String) record.get("title"));
             todo.setDescription((String) record.get("description"));
             todo.setEmergency((Boolean) record.get("emergency"));
+            todo.setPriority((int) record.get("priority"));
             todoList.add(todo);
         }
         return todoList;
@@ -48,12 +49,13 @@ public class TodoDataSourceJdbcTemplate implements TodoRepository {
 
     @Override
     public void saveAsNew(Todo todo) {
-        String queryFormat = "INSERT INTO todo.todos(id, title, description, emergency) VALUES(%d, '%s', '%s', %b)";
+        String queryFormat = "INSERT INTO todo.todos(id, title, description, emergency, priority) VALUES(%d, '%s', '%s', %b, %d)";
         String query = String.format(queryFormat,
                 todo.getId(),
                 todo.getTitle(),
                 todo.getDescription(),
-                todo.getEmergency());
+                todo.getEmergency(),
+                todo.getPriority());
         jdbcTemplate.update(query);
     }
 }
