@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <title>TODO新規登録</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <style>
+        .error-msg {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>TODO新規登録</h1>
+
+<div id="registerForm">
+
+    <form method="POST" th:object="${todoRegisterForm}">
+        <div>
+            <label for="title">タイトル：</label>
+            <input id="title" name="title" th:value="*{title}" type="text" size="50" />
+            <p class="error-msg" th:errors="*{title}">エラーメッセージ</p>
+        </div>
+        <div>
+            <label for="description">説明：</label>
+            <input id="description" name="description" th:value="*{description}" type="text" size="50" />
+            <p class="error-msg" th:errors="*{description}">エラーメッセージ</p>
+        </div>
+        <div>
+            <label for="emergency">緊急：</label>
+            <input id="emergency" name="emergency" th:checked="*{emergency}" type="checkbox"/>
+            <p class="error-msg" th:errors="*{emergency}">エラーメッセージ</p>
+        </div>
+        <div>
+            <input type="submit" value="登録"/>
+        </div>
+    </form>
+
+</div>
+
+<div id="navi" style="margin-top:30px;">
+    <a th:href="@{/todo/list}">戻る</a>
+</div>
+
+</body>
+</html>

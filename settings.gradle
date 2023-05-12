@@ -1,0 +1,2 @@
+rootProject.name = 'java-learning-ddd'
+include 'webapp-todo-example'

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <title>TODOリスト</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <style>
+        table {
+            text-align: left;
+        }
+
+        th, td {
+            border-style: solid;
+            border-width: 1px;
+        }
+    </style>
+</head>
+<body>
+<h1>TODOリスト</h1>
+<div id="information">
+    総件数：<span th:text="${totalCount}"></span>件 /
+    緊急件数：<span th:text="${emergencyCount}"></span>件
+</div>
+<div id="todoList">
+
+    <table style="text-align: left;">
+        <tr>
+            <th>タイトル</th>
+            <th>説明</th>
+            <th>緊急</th>
+        </tr>
+        <tr th:each="todo,stat: *{todoList}">
+            <td th:utext="${todo.title}"></td>
+            <td th:utext="${todo.description}"></td>
+            <td th:utext="${todo.emergency}"></td>
+        </tr>
+    </table>
+</div>
+
+<div id="navi" style="margin-top:30px;">
+    <a th:href="@{/todo/register}">新規登録</a>
+</div>
+
+</body>
+</html>
