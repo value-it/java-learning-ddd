@@ -6,5 +6,7 @@ public interface TodoRepository {
 
     List<Todo> findAll();
 
+    Long nextId();
+
     void saveAsNew(Todo todo);
 }

@@ -23,8 +23,8 @@ https://aws.amazon.com/jp/corretto/
 - タイトル、説明のバリデーションを実装する
   - 必須、文字数、文字種
 - ValueObjectを作る
-- すべてのクラスをイミュータブルにする
-- @ModelAttribute を使う
+- Todoクラスをイミュータブルにする
+- Controllerで@ModelAttribute を使う
 - 緊急フラグの画面表現を改善する
 - TODOを編集可能にする
 - TODOを削除可能にする

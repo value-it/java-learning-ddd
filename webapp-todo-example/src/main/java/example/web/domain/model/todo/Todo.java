@@ -1,9 +1,14 @@
 package example.web.domain.model.todo;
 
 public class Todo {
+    private Long id;
     private String title;
     private String description;
     private Boolean emergency;
+
+    public Long getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;
@@ -13,8 +18,12 @@ public class Todo {
         return description;
     }
 
-    public Boolean isEmergency() {
+    public Boolean getEmergency() {
         return emergency;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {

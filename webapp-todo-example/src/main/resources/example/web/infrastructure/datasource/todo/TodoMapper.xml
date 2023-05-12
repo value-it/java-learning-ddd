@@ -17,6 +17,10 @@
         FROM todo.todos
     </select>
 
+    <select id="nextId" resultType="Long">
+        SELECT nextval('todo.seq_todo_id') AS id
+    </select>
+
     <select id="insert">
         INSERT INTO todo.todos(title, description, emergency)
         VALUES (#{title},

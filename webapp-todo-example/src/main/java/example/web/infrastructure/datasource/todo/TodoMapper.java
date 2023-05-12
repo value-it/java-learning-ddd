@@ -10,5 +10,7 @@ public interface TodoMapper {
 
     List<Todo> findAll();
 
+    Long nextId();
+
     void insert(Todo todo);
 }

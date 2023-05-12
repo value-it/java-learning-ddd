@@ -21,6 +21,11 @@ public class TodoDataSourceMybatis implements TodoRepository {
     }
 
     @Override
+    public Long nextId() {
+        return mapper.nextId();
+    }
+
+    @Override
     public void saveAsNew(Todo todo) {
         mapper.insert(todo);
     }

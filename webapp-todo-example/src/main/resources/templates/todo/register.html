@@ -14,7 +14,7 @@
 
 <div id="registerForm">
 
-    <form method="POST" th:object="${todoRegisterForm}">
+    <form method="POST" th:object="${todo}">
         <div>
             <label for="title">タイトル：</label>
             <input id="title" name="title" th:value="*{title}" type="text" size="50" />

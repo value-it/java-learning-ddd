@@ -1,6 +1,7 @@
 package example.web.presentation.controller.todo.register;
 
 import example.web.application.service.todo.TodoService;
+import example.web.domain.model.todo.Todo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,16 +23,16 @@ public class TodoRegisterController {
 
     @GetMapping
     String index(Model model) {
-        model.addAttribute("todoRegisterForm", new TodoRegisterForm());
+        model.addAttribute("todo", new Todo());
         return "todo/register";
     }
 
     @PostMapping
-    String save(TodoRegisterForm todoRegisterForm, BindingResult result) {
+    String save(Todo todo, BindingResult result) {
         if (result.hasErrors()) {
             return "todo/register";
         }
-        todoService.saveAsNew(todoRegisterForm);
+        todoService.saveAsNew(todo);
         return "redirect:/todo/list";
     }
 }

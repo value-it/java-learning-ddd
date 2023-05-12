@@ -25,7 +25,7 @@ public class TodoListController {
         List<Todo> todoList = todoService.findAll();
         model.addAttribute("todoList", todoList);
         model.addAttribute("totalCount", todoList.size());
-        model.addAttribute("emergencyCount", todoList.stream().filter(todo -> todo.isEmergency()).count());
+        model.addAttribute("emergencyCount", todoList.stream().filter(todo -> todo.getEmergency()).count());
         return "todo/list";
     }
 }
