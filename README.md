@@ -1,5 +1,20 @@
 # java-learning-ddd
 
+## 動作環境
+
+### 要Java17
+https://aws.amazon.com/jp/corretto/
+
+---
+
+## アプリ起動手順
+### サンプルTODOアプリ
+```shell
+./tools/scripts/run-webapp-todo-example
+```
+
+---
+
 ## リファクタリングネタ
 - SQLインジェクションを防ぐ
   - Datasource実装をMyBatisに切り替える
