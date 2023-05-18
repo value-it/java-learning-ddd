@@ -15,17 +15,7 @@ https://aws.amazon.com/jp/corretto/
 
 ---
 
-## リファクタリングネタ
-- SQLインジェクションを防ぐ
-  - Datasource実装をMyBatisに切り替える
-- TodoListクラスを作る
-  - 総件数、緊急件数のカウントはTodoListクラスの関心事にする
-- タイトル、説明、優先度のバリデーションを実装する
-  - 必須、文字数、文字種
-- ValueObjectを作る
-- Todoクラスをイミュータブルにする
-- Controllerで@ModelAttribute を使う
-- 緊急フラグの画面表現を改善する
-- TODOを編集可能にする
-- TODOを削除可能にする
-- DONEを実装する
+## 勉強会
+
+### [前提知識](./勉強会/勉強会_前提知識.md)
+### [実践課題その1](./勉強会/勉強会_実践課題その1.md)

@@ -18,11 +18,13 @@
         <div>
             <label for="title">タイトル：</label>
             <input id="title" name="title" th:value="*{title}" type="text" size="50" />
+            <span>(必須; 記号使用不可; 50文字以内)</span>
             <p class="error-msg" th:errors="*{title}">エラーメッセージ</p>
         </div>
         <div>
             <label for="description">説明：</label>
             <input id="description" name="description" th:value="*{description}" type="text" size="50" />
+            <span>(必須; 記号使用不可; 100文字以内)</span>
             <p class="error-msg" th:errors="*{description}">エラーメッセージ</p>
         </div>
         <div>
@@ -31,8 +33,9 @@
             <p class="error-msg" th:errors="*{emergency}">エラーメッセージ</p>
         </div>
         <div>
-            <label for="priority">優先度(1〜9)：</label>
+            <label for="priority">優先度：</label>
             <input id="priority" name="priority" th:value="*{priority}" type="text" size="3" />
+            <span>(必須; 半角数値; 1〜9)</span>
             <p class="error-msg" th:errors="*{priority}">エラーメッセージ</p>
         </div>
         <div>

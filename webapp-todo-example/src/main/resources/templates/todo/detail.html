@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <title>TODO詳細</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <style>
+    </style>
+</head>
+<body>
+<h1>TODO詳細</h1>
+
+<div id="detail-empty" th:if="${todo == null}">
+    指定されたTODOが見つかりません
+</div>
+
+<div id="detail" th:if="${todo != null}" th:object="${todo}">
+
+    <div>
+        <span>ID：</span>
+        <span th:text="*{id}"></span>
+    </div>
+    <div>
+        <span>タイトル：</span>
+        <span th:text="*{title}"></span>
+    </div>
+    <div>
+        <span>説明：</span>
+        <span th:text="*{description}"></span>
+    </div>
+    <div>
+        <span>緊急：</span>
+        <span th:text="*{emergency}"></span>
+    </div>
+    <div>
+        <span>優先度：</span>
+        <span th:text="*{priority}"></span>
+    </div>
+</div>
+
+<div id="navi" style="margin-top:30px;">
+    <a th:href="@{/todo/list}">戻る</a>
+</div>
+
+</body>
+</html>

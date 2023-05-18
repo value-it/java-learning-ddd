@@ -25,6 +25,7 @@ public class TodoDataSourceJdbcTemplate implements TodoRepository {
         List<Todo> todoList = new ArrayList<>();
 
         String query = "SELECT id, title, description, emergency, priority FROM todo.todos";
+        System.out.println(query);
 
         List<Map<String, Object>> resultList = jdbcTemplate.queryForList(query);
 
@@ -41,21 +42,44 @@ public class TodoDataSourceJdbcTemplate implements TodoRepository {
     }
 
     @Override
-    public Long nextId() {
-        String query = "SELECT nextval('todo.seq_todo_id') AS id";
+    public Todo findByTitle(String title) {
+        String query = "SELECT id, title, description, emergency, priority FROM todo.todos WHERE title = '" + title + "'";
+        System.out.println(query);
+
         Map<String, Object> result = jdbcTemplate.queryForMap(query);
-        return (Long) result.get("id");
+
+        Todo todo = new Todo();
+        todo.setId((Long) result.get("id"));
+        todo.setTitle((String) result.get("title"));
+        todo.setDescription((String) result.get("description"));
+        todo.setEmergency((Boolean) result.get("emergency"));
+        todo.setPriority((int) result.get("priority"));
+
+        return todo;
     }
 
     @Override
     public void saveAsNew(Todo todo) {
+        Long nextId = nextId();
         String queryFormat = "INSERT INTO todo.todos(id, title, description, emergency, priority) VALUES(%d, '%s', '%s', %b, %d)";
         String query = String.format(queryFormat,
-                todo.getId(),
+                nextId,
                 todo.getTitle(),
                 todo.getDescription(),
                 todo.getEmergency(),
                 todo.getPriority());
+        System.out.println(query);
+
         jdbcTemplate.update(query);
     }
+
+    private Long nextId() {
+        String query = "SELECT nextval('todo.seq_todo_id') AS id";
+        System.out.println(query);
+
+        Map<String, Object> result = jdbcTemplate.queryForMap(query);
+
+        return (Long) result.get("id");
+    }
+
 }

@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="example.web.infrastructure.datasource.todo.TodoMapper">
-    <resultMap id="Todo" type="example.web.domain.model.todo.Todo">
-        <constructor>
-            <idArg column="id" javaType="Long"/>
-            <arg column="title" javaType="String"/>
-            <arg column="description" javaType="String"/>
-            <arg column="emergency" javaType="boolean"/>
-            <arg column="priority" javaType="int"/>
-        </constructor>
-    </resultMap>
 
-    <select id="findAll" resultMap="Todo">
+    <sql id="selectBase">
         SELECT id
              , title
              , description
              , emergency
              , priority
         FROM todo.todos
+    </sql>
+
+    <select id="findAll" resultType="example.web.infrastructure.datasource.todo.dao.TodoDao">
+        <include refid="selectBase"/>
+    </select>
+
+    <select id="findByTitle" resultType="example.web.infrastructure.datasource.todo.dao.TodoDao">
+        <include refid="selectBase"/>
+        WHERE title = #{title}
     </select>
 
     <select id="nextId" resultType="Long">
@@ -33,4 +33,5 @@
                 #{emergency},
                 #{priority})
     </select>
+
 </mapper>

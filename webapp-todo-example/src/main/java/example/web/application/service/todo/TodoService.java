@@ -19,8 +19,13 @@ public class TodoService {
         return todoRepository.findAll();
     }
 
+    public Todo findByTitle(String title) {
+        return todoRepository.findByTitle(title);
+    }
+
     public void saveAsNew(Todo todo) {
-        todo.setId(todoRepository.nextId());
         todoRepository.saveAsNew(todo);
     }
+
+
 }

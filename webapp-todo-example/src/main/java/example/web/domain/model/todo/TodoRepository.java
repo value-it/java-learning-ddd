@@ -6,7 +6,7 @@ public interface TodoRepository {
 
     List<Todo> findAll();
 
-    Long nextId();
+    Todo findByTitle(String title);
 
     void saveAsNew(Todo todo);
 }

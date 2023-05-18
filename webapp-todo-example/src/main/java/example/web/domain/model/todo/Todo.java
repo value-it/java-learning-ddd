@@ -1,12 +1,25 @@
 package example.web.domain.model.todo;
 
+import javax.validation.Valid;
+
 public class Todo {
     private Long id;
+    @Valid
     private String title;
     private String description;
-    private Boolean emergency;
+    private Boolean emergency = false;
+    private Integer priority = 0;
 
-    private int priority;
+    public Todo() {
+    }
+
+    public Todo(Long id, String title, String description, Boolean emergency, Integer priority) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.emergency = emergency;
+        this.priority = priority;
+    }
 
     public Long getId() {
         return id;
@@ -24,7 +37,7 @@ public class Todo {
         return emergency;
     }
 
-    public int getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
@@ -44,7 +57,7 @@ public class Todo {
         this.emergency = emergency;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
 }
