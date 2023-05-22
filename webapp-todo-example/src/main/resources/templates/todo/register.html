@@ -15,28 +15,27 @@
 <div id="registerForm">
 
     <form method="POST" th:object="${todo}">
+        <div th:if="${error}">
+            <p class="error-msg">入力値が不正です</p>
+        </div>
         <div>
             <label for="title">タイトル：</label>
             <input id="title" name="title" th:value="*{title}" type="text" size="50" />
-            <span>(必須; 記号使用不可; 50文字以内)</span>
-            <p class="error-msg" th:errors="*{title}">エラーメッセージ</p>
+            <span>(必須; 50文字以内; 記号はハイフン、アンダースコアのみ使用可)</span>
         </div>
         <div>
             <label for="description">説明：</label>
             <input id="description" name="description" th:value="*{description}" type="text" size="50" />
-            <span>(必須; 記号使用不可; 100文字以内)</span>
-            <p class="error-msg" th:errors="*{description}">エラーメッセージ</p>
+            <span>(必須; 100文字以内; 記号はハイフン、アンダースコアのみ使用可)</span>
         </div>
         <div>
             <label for="emergency">緊急：</label>
             <input id="emergency" name="emergency" th:checked="*{emergency}" type="checkbox"/>
-            <p class="error-msg" th:errors="*{emergency}">エラーメッセージ</p>
         </div>
         <div>
             <label for="priority">優先度：</label>
             <input id="priority" name="priority" th:value="*{priority}" type="text" size="3" />
             <span>(必須; 半角数値; 1〜9)</span>
-            <p class="error-msg" th:errors="*{priority}">エラーメッセージ</p>
         </div>
         <div>
             <input type="submit" value="登録"/>

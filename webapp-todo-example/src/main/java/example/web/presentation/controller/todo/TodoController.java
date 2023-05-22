@@ -4,13 +4,11 @@ import example.web.application.service.todo.TodoService;
 import example.web.domain.model.todo.Todo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -26,9 +24,15 @@ public class TodoController {
     @GetMapping("/list")
     String list(Model model) {
         List<Todo> todoList = todoService.findAll();
+        int emergencyCount = 0;
+        for (Todo todo : todoList) {
+            if (todo.getEmergency()) {
+                emergencyCount++;
+            }
+        }
         model.addAttribute("todoList", todoList);
         model.addAttribute("totalCount", todoList.size());
-        model.addAttribute("emergencyCount", todoList.stream().filter(todo -> todo.getEmergency()).count());
+        model.addAttribute("emergencyCount", emergencyCount);
         return "todo/list";
     }
 
@@ -45,8 +49,9 @@ public class TodoController {
     }
 
     @PostMapping("/register")
-    String save(@Valid Todo todo, BindingResult result) {
-        if (result.hasErrors()) {
+    String save(Todo todo, Model model) {
+        if (!todo.isValid()) {
+            model.addAttribute("error", true);
             return "todo/register";
         }
         todoService.saveAsNew(todo);

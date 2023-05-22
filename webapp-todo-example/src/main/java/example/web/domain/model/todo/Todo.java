@@ -1,10 +1,7 @@
 package example.web.domain.model.todo;
 
-import javax.validation.Valid;
-
 public class Todo {
     private Long id;
-    @Valid
     private String title;
     private String description;
     private Boolean emergency = false;
@@ -13,12 +10,8 @@ public class Todo {
     public Todo() {
     }
 
-    public Todo(Long id, String title, String description, Boolean emergency, Integer priority) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.emergency = emergency;
-        this.priority = priority;
+    public boolean isValid(){
+        return true;
     }
 
     public Long getId() {
