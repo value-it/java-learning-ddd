@@ -1,8 +1,8 @@
-package example.web.infrastructure.datasource.todo.dao;
+package example.web.infrastructure.datasource.todo.dto;
 
 import example.web.domain.model.todo.Todo;
 
-public class TodoDao {
+public class TodoDto {
     private Long id;
     private String title;
     private String description;

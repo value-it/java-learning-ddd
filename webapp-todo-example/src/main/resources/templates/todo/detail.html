@@ -4,6 +4,18 @@
     <title>TODO詳細</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
     <style>
+        div{
+            margin-bottom: 1em;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        p span {
+            white-space: -moz-pre-wrap;
+            white-space: -o-pre-wrap;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -20,20 +32,23 @@
         <span th:text="*{id}"></span>
     </div>
     <div>
-        <span>タイトル：</span>
-        <span th:text="*{title}"></span>
+        <p><label>タイトル：</label></p>
+        <p><span th:text="*{title}"></span></p>
     </div>
     <div>
-        <span>説明：</span>
-        <span th:text="*{description}"></span>
+        <p><label>説明：</label></p>
+        <p><span th:text="*{description}"></span></p>
     </div>
     <div>
-        <span>緊急：</span>
-        <span th:text="*{emergency}"></span>
+        <p><label>緊急：</label></p>
+        <p>
+            <th:block th:if="*{emergency == true}">はい</th:block>
+            <th:block th:if="*{emergency == false}">いいえ</th:block>
+        </p>
     </div>
     <div>
-        <span>優先度：</span>
-        <span th:text="*{priority}"></span>
+        <p><label>優先度：</label></p>
+        <p><span th:text="*{priority}"></span></p>
     </div>
 </div>
 

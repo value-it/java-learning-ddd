@@ -24,14 +24,27 @@ public class TodoController {
     @GetMapping("/list")
     String list(Model model) {
         List<Todo> todoList = todoService.findAll();
+
+        int totalCount = todoList.size();
         int emergencyCount = 0;
+
         for (Todo todo : todoList) {
+            // 緊急の件数
             if (todo.getEmergency()) {
                 emergencyCount++;
             }
+            // 一覧ではタイトルの先頭20文字まで表示する
+            if (todo.getTitle().length() > 30) {
+                todo.setTitle(todo.getTitle().substring(0, 30) + "...");
+            }
+            // 一覧では説明の先頭40文字まで表示する
+            if (todo.getDescription().length() > 40) {
+                todo.setDescription(todo.getDescription().substring(0, 40) + "...");
+            }
         }
+
         model.addAttribute("todoList", todoList);
-        model.addAttribute("totalCount", todoList.size());
+        model.addAttribute("totalCount", totalCount);
         model.addAttribute("emergencyCount", emergencyCount);
         return "todo/list";
     }

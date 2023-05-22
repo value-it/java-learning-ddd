@@ -2,8 +2,7 @@ package example.web.infrastructure.datasource.todo;
 
 import example.web.domain.model.todo.Todo;
 import example.web.domain.model.todo.TodoRepository;
-import example.web.infrastructure.datasource.todo.dao.TodoListDao;
-import org.springframework.context.annotation.Primary;
+import example.web.infrastructure.datasource.todo.dto.TodoListDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class TodoDataSourceMybatis implements TodoRepository {
 
     @Override
     public List<Todo> findAll() {
-        TodoListDao todoDaoList = new TodoListDao(mapper.findAll());
+        TodoListDto todoDaoList = new TodoListDto(mapper.findAll());
         return todoDaoList.toDomainModel();
     }
 

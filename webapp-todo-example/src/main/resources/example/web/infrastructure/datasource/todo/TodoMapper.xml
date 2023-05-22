@@ -12,11 +12,11 @@
         FROM todo.todos
     </sql>
 
-    <select id="findAll" resultType="example.web.infrastructure.datasource.todo.dao.TodoDao">
+    <select id="findAll" resultType="example.web.infrastructure.datasource.todo.dto.TodoDto">
         <include refid="selectBase"/>
     </select>
 
-    <select id="findByTitle" resultType="example.web.infrastructure.datasource.todo.dao.TodoDao">
+    <select id="findByTitle" resultType="example.web.infrastructure.datasource.todo.dto.TodoDto">
         <include refid="selectBase"/>
         WHERE title = #{title}
     </select>

@@ -7,6 +7,13 @@
         .error-msg {
             color: red;
         }
+        div{
+            margin-bottom: 1em;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
@@ -19,23 +26,23 @@
             <p class="error-msg">入力値が不正です</p>
         </div>
         <div>
-            <label for="title">タイトル：</label>
-            <input id="title" name="title" th:value="*{title}" type="text" size="50" />
-            <span>(必須; 50文字以内; 記号はハイフン、アンダースコアのみ使用可)</span>
+            <p><label for="title">タイトル：</label></p>
+            <p><input id="title" name="title" th:value="*{title}" type="text" size="50"/></p>
+            <p>(必須; 50文字以内; 記号はハイフン、アンダースコアのみ使用可)</p>
         </div>
         <div>
-            <label for="description">説明：</label>
-            <input id="description" name="description" th:value="*{description}" type="text" size="50" />
-            <span>(必須; 100文字以内; 記号はハイフン、アンダースコアのみ使用可)</span>
+            <p><label for="description">説明：</label></p>
+            <p><textarea id="description" name="description" th:value="*{description}" rows="5"></textarea></p>
+            <p>(必須; 100文字以内; 記号はハイフン、アンダースコアのみ使用可)</p>
         </div>
         <div>
-            <label for="emergency">緊急：</label>
-            <input id="emergency" name="emergency" th:checked="*{emergency}" type="checkbox"/>
+            <p><label for="emergency">緊急：</label></p>
+            <p><input id="emergency" name="emergency" th:checked="*{emergency}" type="checkbox"/></p>
         </div>
         <div>
-            <label for="priority">優先度：</label>
-            <input id="priority" name="priority" th:value="*{priority}" type="text" size="3" />
-            <span>(必須; 半角数値; 1〜9)</span>
+            <p><label for="priority">優先度：</label></p>
+            <p><input id="priority" name="priority" th:value="*{priority}" type="text" size="3"/></p>
+            <p>(必須; 半角数値; 1〜9)</p>
         </div>
         <div>
             <input type="submit" value="登録"/>
