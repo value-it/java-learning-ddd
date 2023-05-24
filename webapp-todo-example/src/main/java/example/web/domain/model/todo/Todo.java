@@ -5,7 +5,7 @@ public class Todo {
     private String title;
     private String description;
     private Boolean emergency = false;
-    private Integer priority = 0;
+    private String priority = "0";
 
     public Todo() {
     }
@@ -30,7 +30,7 @@ public class Todo {
         return emergency;
     }
 
-    public Integer getPriority() {
+    public String getPriority() {
         return priority;
     }
 
@@ -50,7 +50,7 @@ public class Todo {
         this.emergency = emergency;
     }
 
-    public void setPriority(Integer priority) {
+    public void setPriority(String priority) {
         this.priority = priority;
     }
 }

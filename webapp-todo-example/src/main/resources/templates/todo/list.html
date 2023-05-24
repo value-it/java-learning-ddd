@@ -24,22 +24,16 @@
 
     <table style="text-align: left;">
         <tr>
-            <th>ID</th>
             <th>タイトル</th>
-            <th>説明</th>
             <th>緊急</th>
-            <th>優先度</th>
             <th></th>
         </tr>
         <tr th:each="todo,stat: *{todoList}">
-            <td th:utext="${todo.id}"></td>
             <td th:utext="${todo.title}"></td>
-            <td th:utext="${todo.description}"></td>
             <td>
                 <th:block th:if="${todo.emergency == true}">はい</th:block>
                 <th:block th:if="${todo.emergency == false}">いいえ</th:block>
             </td>
-            <td th:utext="${todo.priority}"></td>
             <td><a th:href="@{/todo/detail(title=${todo.title})}">詳細</a></td>
         </tr>
     </table>

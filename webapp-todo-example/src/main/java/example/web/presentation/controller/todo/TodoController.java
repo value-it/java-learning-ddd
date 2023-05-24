@@ -37,10 +37,6 @@ public class TodoController {
             if (todo.getTitle().length() > 30) {
                 todo.setTitle(todo.getTitle().substring(0, 30) + "...");
             }
-            // 一覧では説明の先頭40文字まで表示する
-            if (todo.getDescription().length() > 40) {
-                todo.setDescription(todo.getDescription().substring(0, 40) + "...");
-            }
         }
 
         model.addAttribute("todoList", todoList);
