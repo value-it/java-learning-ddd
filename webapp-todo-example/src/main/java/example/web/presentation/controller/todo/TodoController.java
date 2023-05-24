@@ -33,7 +33,7 @@ public class TodoController {
             if (todo.getEmergency()) {
                 emergencyCount++;
             }
-            // 一覧ではタイトルの先頭20文字まで表示する
+            // 一覧ではタイトルの先頭30文字まで表示する
             if (todo.getTitle().length() > 30) {
                 todo.setTitle(todo.getTitle().substring(0, 30) + "...");
             }
