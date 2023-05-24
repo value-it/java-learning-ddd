@@ -2,6 +2,7 @@ package example.web.presentation.controller.todo;
 
 import example.web.application.service.todo.TodoService;
 import example.web.domain.model.todo.Todo;
+import example.web.domain.model.todo.TodoList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,23 +24,12 @@ public class TodoController {
 
     @GetMapping("/list")
     String list(Model model) {
-        List<Todo> todoList = todoService.findAll();
+        TodoList todoList = todoService.findAll();
 
-        int totalCount = todoList.size();
-        int emergencyCount = 0;
+        int totalCount = todoList.totalCount();
+        int emergencyCount = todoList.emergencyCount();
 
-        for (Todo todo : todoList) {
-            // 緊急の件数
-            if (todo.getEmergency()) {
-                emergencyCount++;
-            }
-            // 一覧ではタイトルの先頭30文字まで表示する
-            if (todo.getTitle().length() > 30) {
-                todo.setTitle(todo.getTitle().substring(0, 30) + "...");
-            }
-        }
-
-        model.addAttribute("todoList", todoList);
+        model.addAttribute("todoList", todoList.getList());
         model.addAttribute("totalCount", totalCount);
         model.addAttribute("emergencyCount", emergencyCount);
         return "todo/list";

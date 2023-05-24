@@ -2,7 +2,7 @@ package example.web.domain.model.todo;
 
 public class Todo {
     private Long id;
-    private String title;
+    private Title title;
     private String description;
     private Boolean emergency = false;
     private String priority = "0";
@@ -11,6 +11,11 @@ public class Todo {
     }
 
     public boolean isValid(){
+        // Titleが正しいことを検証する
+        if (title.getValue().contains("\"")) {
+            return false;
+        }
+
         return true;
     }
 
@@ -18,7 +23,7 @@ public class Todo {
         return id;
     }
 
-    public String getTitle() {
+    public Title getTitle() {
         return title;
     }
 
@@ -39,7 +44,7 @@ public class Todo {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = new Title(title);
     }
 
     public void setDescription(String description) {

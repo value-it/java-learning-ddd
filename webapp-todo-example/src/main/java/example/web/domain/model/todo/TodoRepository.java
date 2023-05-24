@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface TodoRepository {
 
-    List<Todo> findAll();
+    TodoList findAll();
 
     Todo findByTitle(String title);
 
