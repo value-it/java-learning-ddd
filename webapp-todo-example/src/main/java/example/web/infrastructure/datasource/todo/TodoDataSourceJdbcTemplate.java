@@ -1,6 +1,7 @@
 package example.web.infrastructure.datasource.todo;
 
 import example.web.domain.model.todo.Todo;
+import example.web.domain.model.todo.TodoList;
 import example.web.domain.model.todo.TodoRepository;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,7 +22,7 @@ public class TodoDataSourceJdbcTemplate implements TodoRepository {
     }
 
     @Override
-    public List<Todo> findAll() {
+    public TodoList findAll() {
         List<Todo> todoList = new ArrayList<>();
 
         String query = "SELECT id, title, description, emergency, priority FROM todo.todos";
@@ -38,7 +39,7 @@ public class TodoDataSourceJdbcTemplate implements TodoRepository {
             todo.setPriority(record.get("priority").toString());
             todoList.add(todo);
         }
-        return todoList;
+        return new TodoList(todoList);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package example.web.application.service.todo;
 
 import example.web.domain.model.todo.Todo;
+import example.web.domain.model.todo.TodoList;
 import example.web.domain.model.todo.TodoRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    public List<Todo> findAll() {
+    public TodoList findAll() {
         return todoRepository.findAll();
     }
 
