@@ -3,6 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="example.web.infrastructure.datasource.todo.TodoMapper">
 
+    <resultMap id="Todo" type="example.web.domain.model.todo.Todo">
+        <id property="id" column="Long"/>
+        <result property="title" column="title"/>
+        <result property="description" column="description"/>
+        <result property="emergency" column="emergency"/>
+        <result property="priority" column="priority"/>
+    </resultMap>
+
     <sql id="selectBase">
         SELECT id
              , title
@@ -12,11 +20,11 @@
         FROM todo.todos
     </sql>
 
-    <select id="findAll" resultType="example.web.infrastructure.datasource.todo.dto.TodoDto">
+    <select id="findAll" resultMap="Todo">
         <include refid="selectBase"/>
     </select>
 
-    <select id="findByTitle" resultType="example.web.infrastructure.datasource.todo.dto.TodoDto">
+    <select id="findByTitle" resultMap="Todo">
         <include refid="selectBase"/>
         WHERE title = #{title}
     </select>
@@ -28,7 +36,7 @@
     <select id="insert">
         INSERT INTO todo.todos(id, title, description, emergency, priority)
         VALUES (#{id},
-                #{title},
+                #{title.value},
                 #{description},
                 #{emergency},
                 #{priority})
