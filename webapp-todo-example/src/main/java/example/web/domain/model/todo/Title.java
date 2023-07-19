@@ -1,6 +1,6 @@
 package example.web.domain.model.todo;
 
-public class Title  {
+public class Title {
     private String value;
 
     public Title(String value) {

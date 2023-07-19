@@ -5,12 +5,12 @@ public class Todo {
     private Title title;
     private String description;
     private Boolean emergency = false;
-    private String priority = "0";
+    private Integer priority = 0;
 
     public Todo() {
     }
 
-    public boolean isValid(){
+    public boolean isValid() {
         // Titleが正しいことを検証する
         if (title.getValue().contains("\"")) {
             return false;
@@ -35,7 +35,7 @@ public class Todo {
         return emergency;
     }
 
-    public String getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
@@ -55,7 +55,7 @@ public class Todo {
         this.emergency = emergency;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
 }
