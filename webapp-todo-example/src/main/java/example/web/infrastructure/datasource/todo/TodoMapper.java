@@ -1,6 +1,7 @@
 package example.web.infrastructure.datasource.todo;
 
 import example.web.domain.model.todo.Todo;
+import example.web.infrastructure.datasource.todo.dto.TodoDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface TodoMapper {
 
     void insert(Todo todo);
 
-    Todo findByTitle(String title);
+    TodoDto findByTitle(String title);
 }

@@ -1,7 +1,5 @@
 package example.web.domain.model.todo;
 
-import java.util.List;
-
 public interface TodoRepository {
 
     TodoList findAll();

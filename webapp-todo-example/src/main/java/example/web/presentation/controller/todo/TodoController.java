@@ -3,6 +3,7 @@ package example.web.presentation.controller.todo;
 import example.web.application.service.todo.TodoService;
 import example.web.domain.model.todo.Todo;
 import example.web.domain.model.todo.TodoList;
+import example.web.presentation.controller.todo.form.TodoDetailForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +38,8 @@ public class TodoController {
 
     @GetMapping("/detail")
     String detail(@RequestParam("title") String titleCriteria, Model model) {
-        model.addAttribute("todo", todoService.findByTitle(titleCriteria));
+        Todo todo = todoService.findByTitle(titleCriteria);
+        model.addAttribute("todo", new TodoDetailForm(todo));
         return "todo/detail";
     }
 

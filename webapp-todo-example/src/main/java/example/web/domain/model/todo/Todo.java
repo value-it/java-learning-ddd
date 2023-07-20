@@ -3,7 +3,7 @@ package example.web.domain.model.todo;
 public class Todo {
     private Long id;
     private Title title;
-    private String description;
+    private Description description;
     private Boolean emergency = false;
     private Integer priority = 0;
 
@@ -23,11 +23,11 @@ public class Todo {
         return id;
     }
 
-    public Title getTitle() {
+    public Title getTitleHoge() {
         return title;
     }
 
-    public String getDescription() {
+    public Description getDescription() {
         return description;
     }
 
@@ -48,7 +48,7 @@ public class Todo {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = new Description(description);
     }
 
     public void setEmergency(Boolean emergency) {

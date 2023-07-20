@@ -24,7 +24,7 @@
         <include refid="selectBase"/>
     </select>
 
-    <select id="findByTitle" resultMap="Todo">
+    <select id="findByTitle" resultType="example.web.infrastructure.datasource.todo.dto.TodoDto">
         <include refid="selectBase"/>
         WHERE title = #{title}
     </select>

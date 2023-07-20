@@ -29,12 +29,12 @@
             <th></th>
         </tr>
         <tr th:each="todo,stat: *{todoList}">
-            <td th:utext="${todo.title.getSummary()}"></td>
+            <td th:utext="${todo.titleHoge.getSummary()}"></td>
             <td>
                 <th:block th:if="${todo.emergency == true}">はい</th:block>
                 <th:block th:if="${todo.emergency == false}">いいえ</th:block>
             </td>
-            <td><a th:href="@{/todo/detail(title=${todo.title.value})}">詳細</a></td>
+            <td><a th:href="@{/todo/detail(title=${todo.titleHoge.value})}">詳細</a></td>
         </tr>
     </table>
 </div>
